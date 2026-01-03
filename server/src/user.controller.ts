@@ -1,5 +1,5 @@
 import { AppError } from "./errorHandler.js";
-import User from "./user.model.js";
+import User from "./User.model.js";
 import type { Request, Response } from "express";
 
 const getAllUsers = async (req: Request, res: Response) => {
@@ -25,32 +25,32 @@ const getUserById = async (req: Request & {
     })
 }
 
-const addUser = async(req: Request & {
-    body:{
-        name: string,
-        email: string,
-        password: string
-    }
-}, res: Response) => {
-    const {name, email, password} = req.body;
-    if (name === null || email === null || password === null) {
-        throw new AppError("Must have all fields", 400);
-    }
+// const addUser = async(req: Request & {
+//     body:{
+//         name: string,
+//         email: string,
+//         password: string
+//     }
+// }, res: Response) => {
+//     const {name, email, password} = req.body;
+//     if (name === null || email === null || password === null) {
+//         throw new AppError("Must have all fields", 400);
+//     }
 
-    const newUser = new User({
-        name, email, password
-    });
+//     const newUser = new User({
+//         name, email, password
+//     });
 
-    const user = await newUser.save();
-    if(!user) throw new Error("Something went wrong!");
+//     const user = await newUser.save();
+//     if(!user) throw new Error("Something went wrong!");
 
-    return res.status(200).json({
-        user
-    });
-}
+//     return res.status(200).json({
+//         user
+//     });
+// }
 
 export {
     getAllUsers,
     getUserById,
-    addUser,
+    // addUser,
 }
