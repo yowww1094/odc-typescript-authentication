@@ -9,7 +9,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 
 router.get('/users', isAuthenticated, getAllUsers);
-router.get('/users/:id', getUserById);
+router.get('/users/:id',isAuthenticated, getUserById);
 // router.post('/users', addUser);
 
 export default router;

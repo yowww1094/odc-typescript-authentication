@@ -2,7 +2,6 @@ import { AppError } from "./errorHandler.js";
 import type { Request, Response, NextFunction } from "express";
 import User from "./User.model.js";
 import { jwtVerifyUser } from "./jwt.js";
-import type { JwtPayload } from "jsonwebtoken";
 
 const isAuthenticated = async (req: Request, res: Response, next: NextFunction) => {
 
