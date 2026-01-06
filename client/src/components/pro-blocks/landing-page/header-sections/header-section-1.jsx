@@ -2,10 +2,8 @@
 
 import { Tagline } from "@/components/pro-blocks/landing-page/tagline";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 
-export function HeaderSection1({userData}) {
+export function HeaderSection1({userData, onLogout}) {
 
   return (
     <section
@@ -29,7 +27,7 @@ export function HeaderSection1({userData}) {
               aria-description="page description">
               and has role: {userData.role}
             </p>
-            <Button>Log out</Button>
+            <Button onClick={onLogout}>Log out</Button>
           </div>
         </div>
       </div>

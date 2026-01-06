@@ -26,12 +26,23 @@ function Home() {
     getUserData(token);
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('user_id');
 
+    await axios.get(API_LINK + 'logout', {headers: {'authorization': 'Bearer ' + token, id: userId}})
+    .then(response => {
+      if (response.status === 200) {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user_id')
+        navigate('/login')
+      }
+    })
+    
   };
 
   return (
-    <HeaderSection1 userData={userData} />
+    <HeaderSection1 userData={userData} onLogout={handleLogout} />
   )
 }
 
