@@ -30,7 +30,7 @@ userSchema.pre('save', async function(this: IUser){
     } catch (error) {
         throw new Error("Something went Wrong!");
     }
-})
+});
 
 const User = model<IUser>("User", userSchema);
 

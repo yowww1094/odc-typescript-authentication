@@ -65,7 +65,24 @@ const loginUser = async (req: Request & {
     })
 }
 
+const logoutUser = async (req: Request, res: Response) => {
+    
+    
+    const id: string = req.headers.id || '';
+    if(!id) throw new AppError('Id not Valid', 400);
+
+    const user = await User.findById(id);
+    if(!user) throw new AppError("User not Found!", 400);
+
+    user.jwtToken = ""
+    await user.save()
+
+    return res.sendStatus(200);
+
+}
+
 export {
     registerUser,
     loginUser,
+    logoutUser
 }
